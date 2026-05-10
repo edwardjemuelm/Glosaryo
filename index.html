@@ -6,28 +6,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glosaryo ng Kartunan</title>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="./images/bg4.png" type="image/png">
 
     <style>
+        /* ===== LIGHT MODE (DEFAULT) ===== */
         :root {
-            --gold: #FFD700;
-            --gold-dark: #FFC107;
-            --gold-deep: #FFA500;
-            --red: #D32F2F;
-            --red-dark: #B71C1C;
-            --red-deep: #7F0000;
-            --blue: #1565C0;
-            --blue-mid: #1E88E5;
-            --blue-light: #42A5F5;
-            --blue-sky: #32BCE6;
-            --teal: #03B9A6;
-            --bg-warm: #E0BE99;
-            --bg-dark: #1a0a00;
-            --pixel-shadow: 4px 4px 0px #000;
+            --gold: #f3aa0e;
+            --gold-dark: #ed9b0e;
+            --gold-deep: #8C5A00;
+            --red: #9B2828;
+            --red-dark: #7A1616;
+            --red-deep: #4E0A0A;
+            --blue: #1a4d8f;
+            --blue-mid: #2563a8;
+            --blue-light: #4a80c4;
+            --blue-sky: #2a9db8;
+            --teal: #127a6e;
+            /* Enhanced Cardboard / kraft paper palette */
+            --bg-page: #c8a86a;
+            --bg-section: #b8944e;
+            --bg-section2: #c2a05a;
+            --bg-dark: #241504;
+            --text-body: #1e1002;
+            --text-muted: #4a2e0e;
+            --text-on-dark: #f5e4c0;
+            --card-bg: #e0c080;
+            --card-border: #8a6420;
+            --nav-bg: rgba(28, 14, 2, 0.97);
+            --search-bg: rgba(30, 16, 2, 0.65);
+            --pixel-shadow: 4px 4px 0px #4a2206;
             --card-radius: 0px;
+            /* Audio button */
+            --audio-bg: #9B2828;
+            --audio-hover: #7A1616;
+            --audio-text: #fff8ee;
+        }
+
+        /* ===== DARK MODE ===== */
+        body.dark-mode {
+            --bg-page: #160e02;
+            --bg-section: #1c1204;
+            --bg-section2: #181002;
+            --text-body: #e8d5a8;
+            --text-muted: #a08050;
+            --text-on-dark: #e8d5a8;
+            --card-bg: #241602;
+            --card-border: #6e4a10;
+            --nav-bg: rgba(8, 4, 0, 0.98);
+            --search-bg: rgba(8, 4, 0, 0.8);
+            --gold: #e8aa18;
+            --gold-dark: #c88a08;
+            --gold-deep: #a87000;
+        }
+
+        /* ===== CARDBOARD TEXTURE MIXIN ===== */
+        .cardboard-bg {
+            background-color: var(--bg-section);
+            background-image:
+                repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.065) 2px,
+                    rgba(0, 0, 0, 0.065) 3px),
+                repeating-linear-gradient(90deg,
+                    transparent,
+                    transparent 5px,
+                    rgba(0, 0, 0, 0.045) 5px,
+                    rgba(0, 0, 0, 0.045) 6px),
+                repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 18px,
+                    rgba(255, 220, 140, 0.055) 18px,
+                    rgba(255, 220, 140, 0.055) 19px),
+                repeating-linear-gradient(135deg,
+                    transparent,
+                    transparent 24px,
+                    rgba(0, 0, 0, 0.025) 24px,
+                    rgba(0, 0, 0, 0.025) 25px),
+                linear-gradient(160deg,
+                    rgba(255, 235, 180, 0.14) 0%,
+                    transparent 40%,
+                    rgba(0, 0, 0, 0.12) 100%);
+        }
+
+        .cardboard-bg2 {
+            background-color: var(--bg-section2);
+            background-image:
+                repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 3px,
+                    rgba(0, 0, 0, 0.06) 3px,
+                    rgba(0, 0, 0, 0.06) 4px),
+                repeating-linear-gradient(88deg,
+                    transparent,
+                    transparent 7px,
+                    rgba(0, 0, 0, 0.04) 7px,
+                    rgba(0, 0, 0, 0.04) 8px),
+                repeating-linear-gradient(135deg,
+                    transparent,
+                    transparent 22px,
+                    rgba(180, 120, 30, 0.06) 22px,
+                    rgba(180, 120, 30, 0.06) 23px),
+                linear-gradient(135deg,
+                    rgba(255, 230, 160, 0.1) 0%,
+                    transparent 50%,
+                    rgba(0, 0, 0, 0.1) 100%);
+        }
+
+        /* ===== CARDBOARD TAPE DECORATION ===== */
+        .cardboard-tape {
+            position: absolute;
+            background: rgba(210, 185, 110, 0.45);
+            border-top: 1px solid rgba(180, 150, 60, 0.3);
+            border-bottom: 1px solid rgba(180, 150, 60, 0.3);
+            transform: rotate(-2deg);
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        /* Stamp decoration for sections */
+        .section-stamp {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 4px dashed rgba(180, 120, 30, 0.35);
+            transform: rotate(-8deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Jersey 25', cursive;
+            font-size: 10px;
+            color: rgba(180, 120, 30, 0.4);
+            letter-spacing: 2px;
+            pointer-events: none;
         }
 
         * {
@@ -43,11 +155,23 @@
         }
 
         body {
-            background-color: var(--bg-warm);
-            color: #fff;
-            font-family: 'Jersey 10', cursive;
+            background-color: var(--bg-page);
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.04) 3px, rgba(0, 0, 0, 0.04) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0, 0, 0, 0.025) 5px, rgba(0, 0, 0, 0.025) 6px),
+                url('./images/bg5.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: var(--text-body);
+            font-family: 'Nunito', sans-serif;
             overflow-x: hidden;
-            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Crect x='0' y='0' width='4' height='4' fill='%23FFD700'/%3E%3Crect x='4' y='4' width='4' height='4' fill='%23FFD700'/%3E%3Crect x='8' y='8' width='4' height='4' fill='%23FFD700'/%3E%3Crect x='12' y='12' width='4' height='4' fill='%23FFD700'/%3E%3C/svg%3E"), auto;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            color: var(--text-body);
         }
 
         /* ===== PIXEL CORNERS MIXIN ===== */
@@ -86,7 +210,7 @@
         }
 
         nav.scrolled {
-            background: rgba(15, 5, 0, 0.92);
+            background: var(--nav-bg);
             backdrop-filter: blur(8px);
             border-bottom: 3px solid var(--gold);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
@@ -96,7 +220,7 @@
             font-family: 'Jersey 25', cursive;
             font-size: 22px;
             color: var(--gold);
-            text-shadow: 2px 2px 0 var(--red);
+            text-shadow: 2px 2px 0 var(--red-dark);
             letter-spacing: 2px;
             text-decoration: none;
         }
@@ -114,7 +238,7 @@
         }
 
         nav a {
-            color: #fff;
+            color: #f0deb0;
             text-decoration: none;
             margin: 0 8px;
             font-family: 'Jersey 25', cursive;
@@ -124,6 +248,7 @@
             padding: 6px 14px;
             font-weight: 600;
             letter-spacing: 1px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.5);
         }
 
         nav a.active {
@@ -188,7 +313,7 @@
             width: 80%;
             max-width: 300px;
             height: 100vh;
-            background: rgba(10, 3, 0, 0.97);
+            background: var(--nav-bg);
             border-left: 4px solid var(--gold);
             flex-direction: column;
             padding: 80px 30px 30px;
@@ -246,8 +371,25 @@
             align-items: flex-start;
             padding: 0 5%;
             position: relative;
-            background: url('./images/bg4.png') center/cover no-repeat;
+            background-color: #5a3a10;
+            background-image:
+
+                url('./images/bg4.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             overflow: hidden;
+        }
+
+        body.dark-mode .hero {
+            background-color: transparent;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.08) 3px, rgba(0, 0, 0, 0.08) 4px),
+                linear-gradient(160deg, rgba(0, 0, 0, 0.7) 0%, rgba(5, 2, 0, 0.8) 50%, rgba(0, 0, 0, 0.9) 100%),
+                url('./images/bg4.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         /* Pixel scanline overlay */
@@ -315,7 +457,7 @@
         .hero-eyebrow {
             font-family: 'Jersey 25', cursive;
             font-size: clamp(14px, 2vw, 20px);
-            color: var(--gold);
+            color: #fff8e8;
             letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 10px;
@@ -325,13 +467,14 @@
             gap: 10px;
             animation: fadeSlideUp 0.8s ease forwards;
             opacity: 0;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.4);
         }
 
         .hero-eyebrow::before,
         .hero-eyebrow::after {
             content: '■';
             font-size: 10px;
-            color: var(--red);
+            color: #ff8a65;
         }
 
         .hero h1 {
@@ -354,12 +497,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, var(--gold), #fff, var(--gold), #fff, var(--gold));
+            background: linear-gradient(90deg, #f3aa0e, #fff8d0, #f3aa0e, #ffe88a, #f3aa0e);
             background-size: 300% 100%;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: textShine 4s ease-in-out infinite;
+            animation: textShine 12s ease-in-out infinite;
             z-index: 2;
         }
 
@@ -369,7 +512,7 @@
             top: 4px;
             left: 4px;
             color: transparent;
-            text-shadow: 6px 6px 0px var(--red-dark), 10px 10px 0px rgba(0, 0, 0, 0.3);
+            text-shadow: 6px 6px 0px #424242, 10px 10px 0px rgba(0, 0, 0, 0.4);
             z-index: 1;
         }
 
@@ -396,14 +539,15 @@
         }
 
         .hero p {
-            font-family: 'Jersey 10', cursive;
+            font-family: 'Nunito', sans-serif;
             max-width: 650px;
-            font-size: clamp(18px, 2.5vw, 30px);
+            font-size: clamp(16px, 2.2vw, 24px);
             line-height: 1.7;
             margin-bottom: 40px;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 240, 200, 0.95);
             text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.9);
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
+            font-weight: 600;
             animation: fadeSlideUp 0.8s 0.4s ease forwards;
             opacity: 0;
         }
@@ -412,15 +556,18 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 215, 0, 0.15);
+            background: rgba(180, 120, 20, 0.25);
             border: 2px solid var(--gold);
             padding: 8px 18px;
-            font-family: 'Jersey 10', cursive;
-            font-size: 16px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
             color: var(--gold);
             margin-bottom: 30px;
             animation: fadeSlideUp 0.8s 0.3s ease forwards;
             opacity: 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .hero-badge .dot {
@@ -569,19 +716,24 @@
             justify-content: center;
             align-items: center;
             padding: 80px 20px;
-            background: url('./images/bg5.png') center/cover no-repeat;
+            background-color: transparent;
+            background: rgba(20, 10, 0, 0.15);
             text-align: center;
             position: relative;
         }
 
+        body.dark-mode .carousel-section {
+            background-color: rgba(10, 6, 1, 0.8);
+        }
+
         .section-heading {
             font-family: 'Jersey 25', cursive;
-            font-size: clamp(36px, 8vw, 72px);
-            color: var(--gold);
+            font-size: clamp(40px, 8vw, 80px);
+            color: #f3aa0e;
             margin-bottom: 15px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            text-shadow: 3px 3px 0 var(--red), 6px 6px 0 rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 0 #5a0000, 4px 4px 0 rgba(0, 0, 0, 0.5), -1px -1px 0 rgba(0, 0, 0, 0.3);
             position: relative;
             display: inline-block;
         }
@@ -620,11 +772,13 @@
             font-family: 'Jersey 25', cursive;
             font-size: 16px;
             padding: 6px 18px;
-            border: 2px solid rgba(255, 215, 0, 0.4);
-            color: rgba(255, 255, 255, 0.7);
+            border: 2px solid rgba(255, 220, 100, 0.7);
+            color: #fff8e0;
             cursor: default;
             letter-spacing: 1px;
             transition: all 0.2s;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.18);
         }
 
         .carousel-container {
@@ -650,8 +804,8 @@
             flex-direction: column;
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: linear-gradient(180deg, #FFD54F 0%, #FFC107 100%);
-            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2), 0 8px 0 0 var(--red), 0 12px 0 0 var(--red-dark), 0 14px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(160deg, #c87a08 0%, #a05e00 55%, #7a4000 100%);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.35), 0 8px 0 0 var(--red-dark), 0 12px 0 0 var(--red-deep), 0 14px 20px rgba(0, 0, 0, 0.45);
             cursor: pointer;
             flex-shrink: 0;
         }
@@ -709,7 +863,7 @@
                     calc(100% - 10px) calc(100% - 5px), calc(100% - 15px) calc(100% - 5px),
                     calc(100% - 15px) 100%, 15px 100%, 15px calc(100% - 5px), 10px calc(100% - 5px),
                     10px calc(100% - 10px), 5px calc(100% - 10px), 5px calc(100% - 15px), 0% calc(100% - 15px));
-            background: linear-gradient(180deg, #42A5F5 0%, #1E88E5 50%, #1565C0 100%);
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.04) 2px, rgba(0, 0, 0, 0.04) 3px), repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0, 0, 0, 0.025) 5px, rgba(0, 0, 0, 0.025) 6px), linear-gradient(160deg, #3a2008 0%, #2c1804 50%, #1e1002 100%);
         }
 
         .card-red-bg {
@@ -723,7 +877,7 @@
                     calc(100% - 10px) calc(100% - 5px), calc(100% - 15px) calc(100% - 5px),
                     calc(100% - 15px) 100%, 15px 100%, 15px calc(100% - 5px), 10px calc(100% - 5px),
                     10px calc(100% - 10px), 5px calc(100% - 10px), 5px calc(100% - 15px), 0% calc(100% - 15px));
-            background: linear-gradient(180deg, #EF5350 0%, #E53935 50%, #C62828 100%);
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.04) 2px, rgba(0, 0, 0, 0.04) 3px), repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0, 0, 0, 0.025) 5px, rgba(0, 0, 0, 0.025) 6px), linear-gradient(160deg, #3a2008 0%, #2c1804 50%, #1e1002 100%);
         }
 
         .card-yellow-bg {
@@ -737,7 +891,7 @@
                     calc(100% - 10px) calc(100% - 5px), calc(100% - 15px) calc(100% - 5px),
                     calc(100% - 15px) 100%, 15px 100%, 15px calc(100% - 5px), 10px calc(100% - 5px),
                     10px calc(100% - 10px), 5px calc(100% - 10px), 5px calc(100% - 15px), 0% calc(100% - 15px));
-            background: linear-gradient(180deg, #FFEE58 0%, #FDD835 50%, #F9A825 100%);
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.04) 2px, rgba(0, 0, 0, 0.04) 3px), repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0, 0, 0, 0.025) 5px, rgba(0, 0, 0, 0.025) 6px), linear-gradient(160deg, #3a2008 0%, #2c1804 50%, #1e1002 100%);
         }
 
         .card-green-bg {
@@ -751,7 +905,7 @@
                     calc(100% - 10px) calc(100% - 5px), calc(100% - 15px) calc(100% - 5px),
                     calc(100% - 15px) 100%, 15px 100%, 15px calc(100% - 5px), 10px calc(100% - 5px),
                     10px calc(100% - 10px), 5px calc(100% - 10px), 5px calc(100% - 15px), 0% calc(100% - 15px));
-            background: linear-gradient(180deg, #04C6B1 0%, #13b1a1 50%, #03B9A6 100%);
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.04) 2px, rgba(0, 0, 0, 0.04) 3px), repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0, 0, 0, 0.025) 5px, rgba(0, 0, 0, 0.025) 6px), linear-gradient(160deg, #3a2008 0%, #2c1804 50%, #1e1002 100%);
         }
 
         .card-content {
@@ -794,21 +948,22 @@
         .card-title {
             font-family: 'Jersey 25', cursive;
             font-size: 26px;
-            color: #FFFFFF;
+            color: var(--gold);
             margin: 0 0 8px;
             text-transform: capitalize;
-            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7), 0 0 10px rgba(0, 0, 0, 0.4);
             text-align: center;
             z-index: 2;
         }
 
         .card-description {
-            font-family: 'Jersey 10';
-            font-size: 15px;
-            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Nunito', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #f0deb0;
             line-height: 1.4;
             text-align: center;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
             padding: 0 10px;
             z-index: 2;
         }
@@ -885,8 +1040,20 @@
             justify-content: flex-start;
             align-items: center;
             padding: 110px 5% 60px;
-            background: url('./images/bg5.png') center/cover no-repeat;
-            background-size: cover !important;
+            background-color: transparent;
+            background: rgba(20, 10, 0, 0.15);
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.05) 3px, rgba(0, 0, 0, 0.05) 4px),
+                linear-gradient(135deg, rgba(255, 225, 140, 0.06) 0%, transparent 50%, rgba(0, 0, 0, 0.09) 100%);
+            position: relative;
+        }
+
+        body.dark-mode .kagamitan-section,
+        body.dark-mode .materyales-section,
+        body.dark-mode .proseso-section,
+        body.dark-mode .gampanin-section,
+        body.dark-mode .detail-section {
+            background-color: rgba(10, 6, 1, 0.8);
         }
 
         .kagamitan-header,
@@ -911,10 +1078,10 @@
         .detail-title {
             font-family: 'Jersey 25', cursive;
             font-size: clamp(38px, 7vw, 72px);
-            color: var(--gold);
+            color: #f3aa0e;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 3px 3px 0 var(--red), 6px 6px 0 rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 0 #5a0000, 4px 4px 0 rgba(0, 0, 0, 0.5);
             margin: 0;
             flex: 1;
             min-width: 200px;
@@ -946,13 +1113,14 @@
         .search-input {
             width: 100%;
             padding: 14px 16px 14px 48px;
-            font-family: 'Jersey 25', cursive;
-            font-size: 20px;
-            background: rgba(0, 0, 0, 0.6);
+            font-family: 'Nunito', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            background: var(--search-bg);
             border: 3px solid var(--gold-dark);
-            color: #fff;
+            color: var(--text-on-dark);
             outline: none;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             transition: border-color 0.2s, background 0.2s;
             clip-path: polygon(0% 8px, 4px 8px, 4px 4px, 8px 4px, 8px 0%,
                     calc(100% - 8px) 0%, calc(100% - 8px) 4px, calc(100% - 4px) 4px,
@@ -964,12 +1132,12 @@
         }
 
         .search-input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(240, 210, 160, 0.5);
         }
 
         .search-input:focus {
             border-color: var(--gold);
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(40, 20, 0, 0.7);
         }
 
         .search-count {
@@ -993,16 +1161,19 @@
         }
 
         .kagamitan-button {
-            background: linear-gradient(180deg, #32BCE6 0%, #90C8FF 50%, #32BCE6 100%);
-            border: 5px solid var(--gold-dark);
+            background:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.04) 2px, rgba(0, 0, 0, 0.04) 3px),
+                repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(0, 0, 0, 0.025) 6px, rgba(0, 0, 0, 0.025) 7px),
+                linear-gradient(180deg, #e8c870 0%, #c8a040 50%, #a87820 100%);
+            border: 4px solid #6a4010;
             padding: 22px 14px;
             font-family: 'Jersey 25', cursive;
             font-size: 20px;
-            color: #FFFFFF;
+            color: #1e0e00;
             cursor: pointer;
             transition: all 0.15s steps(2);
-            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
-            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1), 0 6px 0 0 var(--red), 0 8px 0 0 var(--red-dark), 0 10px 15px rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 1px 0 rgba(255, 240, 200, 0.4);
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2), 0 6px 0 0 #6a3a08, 0 8px 0 0 #4a2004, 0 10px 15px rgba(0, 0, 0, 0.35);
             position: relative;
             overflow: hidden;
             min-height: 100px;
@@ -1020,11 +1191,24 @@
                     5px calc(100% - 10px), 0% calc(100% - 10px));
         }
 
+        /* Staple decorations on word buttons */
+        .kagamitan-button::after {
+            content: '▬ ▬';
+            position: absolute;
+            top: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 7px;
+            color: rgba(80, 40, 0, 0.4);
+            letter-spacing: 4px;
+            z-index: 3;
+        }
+
         .kagamitan-button::before {
             content: '';
             position: absolute;
             inset: 5px;
-            background: linear-gradient(180deg, #1E88E5 0%, #1565C0 50%, #0D47A1 100%);
+            background: linear-gradient(180deg, #d4a838 0%, #b88420 50%, #8a5e0a 100%);
             clip-path: polygon(0% 6px, 3px 6px, 3px 3px, 6px 3px, 6px 0%,
                     calc(100% - 6px) 0%, calc(100% - 6px) 3px, calc(100% - 3px) 3px,
                     calc(100% - 3px) 6px, 100% 6px, 100% calc(100% - 6px),
@@ -1035,30 +1219,14 @@
             z-index: 1;
         }
 
-        .kagamitan-button::after {
-            content: '▶';
-            position: absolute;
-            right: 14px;
-            font-size: 12px;
-            color: rgba(255, 215, 0, 0.5);
-            z-index: 2;
-            transition: all 0.2s;
-            transform: translateX(0);
-        }
-
-        .kagamitan-button:hover::after {
-            color: var(--gold);
-            transform: translateX(3px);
-        }
-
         .kagamitan-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3), 0 10px 0 0 var(--red), 0 12px 0 0 var(--red-dark), 0 15px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.4), 0 10px 0 0 #6a3a08, 0 12px 0 0 #4a2004, 0 15px 20px rgba(0, 0, 0, 0.35);
         }
 
         .kagamitan-button:active {
             transform: translateY(-2px);
-            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1), 0 4px 0 0 var(--red), 0 6px 0 0 var(--red-dark), 0 8px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15), 0 4px 0 0 #6a3a08, 0 6px 0 0 #4a2004, 0 8px 10px rgba(0, 0, 0, 0.3);
         }
 
         .kagamitan-button>span {
@@ -1067,6 +1235,8 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: clamp(15px, 2.5vw, 19px);
+            color: #1e0e00;
+            text-shadow: 1px 1px 0 rgba(255, 230, 160, 0.5);
         }
 
         .kagamitan-button.hidden {
@@ -1125,7 +1295,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            background: linear-gradient(180deg, #FFD54F 0%, #FFC107 100%);
+            background: linear-gradient(160deg, #c87a08 0%, #a05e00 55%, #7a4000 100%);
             box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15), 0 8px 0 0 var(--red), 0 12px 0 0 var(--red-dark), 0 16px 25px rgba(0, 0, 0, 0.4);
             margin-bottom: 40px;
             animation: cardEntrance 0.4s ease;
@@ -1179,13 +1349,17 @@
                     calc(100% - 10px) calc(100% - 5px), calc(100% - 15px) calc(100% - 5px),
                     calc(100% - 15px) 100%, 15px 100%, 15px calc(100% - 5px), 10px calc(100% - 5px),
                     10px calc(100% - 10px), 5px calc(100% - 10px), 5px calc(100% - 15px), 0% calc(100% - 15px));
-            background: linear-gradient(180deg, #42A5F5 0%, #1E88E5 50%, #1565C0 100%);
+            background:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.04) 2px, rgba(0, 0, 0, 0.04) 3px),
+                repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0, 0, 0, 0.025) 5px, rgba(0, 0, 0, 0.025) 6px),
+                linear-gradient(160deg, #3a2008 0%, #2c1804 50%, #1e1002 100%);
+
         }
 
         .detail-term {
             font-family: 'Jersey 25', cursive;
             font-size: clamp(28px, 5vw, 46px);
-            color: #FFFFFF;
+            color: #f0deb0;
             margin: 0 0 16px;
             text-transform: uppercase;
             text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4);
@@ -1196,49 +1370,87 @@
             padding: 0 12px;
         }
 
-        /* ===== AUDIO ICON ===== */
+        /* ===== AUDIO BUTTON (prominent, clearly labeled) ===== */
         .audio-icon {
-            width: 28px;
-            height: 28px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            padding: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            margin-left: 10px;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.18s ease;
+            border: 2px solid var(--audio-bg);
+            padding: 7px 14px 7px 10px;
+            background: var(--audio-bg);
+            color: var(--audio-text);
+            border-radius: 0;
+            margin-left: 12px;
             flex-shrink: 0;
-            clip-path: polygon(0% 4px, 2px 4px, 2px 2px, 4px 2px, 4px 0%,
-                    calc(100% - 4px) 0%, calc(100% - 4px) 2px, calc(100% - 2px) 2px,
-                    calc(100% - 2px) 4px, 100% 4px, 100% calc(100% - 4px),
-                    calc(100% - 2px) calc(100% - 4px), calc(100% - 2px) calc(100% - 2px),
-                    calc(100% - 4px) calc(100% - 2px), calc(100% - 4px) 100%,
-                    4px 100%, 4px calc(100% - 2px), 2px calc(100% - 2px),
-                    2px calc(100% - 4px), 0% calc(100% - 4px));
+            font-family: 'Nunito', sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            clip-path: polygon(0% 5px, 3px 5px, 3px 2px, 5px 2px, 5px 0%,
+                    calc(100% - 5px) 0%, calc(100% - 5px) 2px, calc(100% - 3px) 2px,
+                    calc(100% - 3px) 5px, 100% 5px, 100% calc(100% - 5px),
+                    calc(100% - 3px) calc(100% - 5px), calc(100% - 3px) calc(100% - 2px),
+                    calc(100% - 5px) calc(100% - 2px), calc(100% - 5px) 100%,
+                    5px 100%, 5px calc(100% - 2px), 3px calc(100% - 2px),
+                    3px calc(100% - 5px), 0% calc(100% - 5px));
+            box-shadow: 2px 2px 0 var(--red-deep);
+        }
+
+        .audio-icon::before {
+            content: '';
+            font-size: 15px;
+            line-height: 1;
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            display: inline-block;
+        }
+
+        .audio-icon::before {
+            content: '\f028';
         }
 
         .audio-icon:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: var(--gold);
-            transform: scale(1.1);
+            background: var(--audio-hover);
+            border-color: var(--audio-hover);
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 var(--red-deep);
         }
 
         .audio-icon svg {
-            width: 14px;
-            height: 14px;
-            fill: var(--gold);
+            display: none;
         }
 
         .audio-icon.playing {
-            background: rgba(255, 107, 107, 0.3);
-            border-color: #FF6B6B;
+            background: #1a6b40;
+            border-color: #145530;
             animation: pulse 0.8s ease infinite;
+            box-shadow: 2px 2px 0 #0a3320;
         }
 
-        .audio-icon.playing svg {
-            fill: #FF6B6B;
+        .audio-icon.playing::before {
+            content: '\f028';
+            animation: wave 0.5s steps(2) infinite alternate;
+        }
+
+        @keyframes wave {
+            to {
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         @keyframes pulse {
@@ -1348,11 +1560,11 @@
         }
 
         .detail-text {
-            font-family: 'Jersey 10';
-            font-size: clamp(16px, 2.5vw, 22px);
-            font-weight: 400;
-            color: #FFFFFF;
-            line-height: 1.6;
+            font-family: 'Nunito', sans-serif;
+            font-size: clamp(15px, 2.2vw, 20px);
+            font-weight: 600;
+            color: #f0deb0;
+            line-height: 1.7;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
 
@@ -1364,8 +1576,41 @@
             justify-content: center;
             align-items: center;
             padding: 80px 5%;
-            background: url('./images/bg5.png') center/cover no-repeat;
+            background-color: transparent;
+            background: rgba(20, 10, 0, 0.15);
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.045) 3px, rgba(0, 0, 0, 0.045) 4px),
+                linear-gradient(160deg, rgba(255, 230, 150, 0.07) 0%, transparent 55%, rgba(0, 0, 0, 0.08) 100%);
+            position: relative;
+            overflow: hidden;
         }
+
+        /* Cardboard edge decoration on kasaysayan 
+        .kasaysayan-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: repeating-linear-gradient(90deg,
+                    #6a4010 0px, #6a4010 20px,
+                    #8a5820 20px, #8a5820 40px);
+            opacity: 0.6;
+        }
+
+        .kasaysayan-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: repeating-linear-gradient(90deg,
+                    #8a5820 0px, #8a5820 20px,
+                    #6a4010 20px, #6a4010 40px);
+            opacity: 0.6;
+        }*/
 
         .kasaysayan-header {
             display: flex;
@@ -1384,7 +1629,7 @@
             color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 3px 3px 0 var(--red), 6px 6px 0 rgba(0, 0, 0, 0.3);
+            text-shadow: 3px 3px 0 var(--red-dark), 5px 5px 0 rgba(0, 0, 0, 0.2);
             margin: 0;
             text-align: center;
             width: 100%;
@@ -1393,7 +1638,10 @@
         .kasaysayan-content {
             max-width: 1200px;
             width: 100%;
-            background: linear-gradient(160deg, #1a3a6b 0%, #1E88E5 40%, #1565C0 100%);
+            background:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.04) 2px, rgba(0, 0, 0, 0.04) 3px),
+                repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0, 0, 0, 0.025) 5px, rgba(0, 0, 0, 0.025) 6px),
+                linear-gradient(160deg, #3a2008 0%, #2c1804 50%, #1e1002 100%);
             border: 5px solid var(--gold-dark);
             clip-path: polygon(0% 14px, 7px 14px, 7px 7px, 14px 7px, 14px 0%,
                     calc(100% - 14px) 0%, calc(100% - 14px) 7px, calc(100% - 7px) 7px,
@@ -1402,14 +1650,16 @@
                     calc(100% - 14px) calc(100% - 7px), calc(100% - 14px) 100%,
                     14px 100%, 14px calc(100% - 7px), 7px calc(100% - 7px),
                     7px calc(100% - 14px), 0% calc(100% - 14px));
-            padding: 30px;
-            font-family: 'Jersey 10', cursive;
-            font-size: clamp(16px, 2.5vw, 22px);
-            color: #FFFFFF;
-            box-shadow: 0 8px 0 0 rgba(255, 152, 0, 0.8), 6px 6px 30px rgba(0, 0, 0, 0.4);
-            line-height: 1.6;
+            padding: 34px 36px;
+            font-family: 'Nunito', sans-serif;
+            font-size: clamp(16px, 2.5vw, 21px);
+            color: #f0deb0;
+            box-shadow: 0 8px 0 0 var(--red-dark), 6px 6px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 220, 120, 0.1);
+            line-height: 1.75;
             margin-bottom: 30px;
             position: relative;
+            font-weight: 600;
+            letter-spacing: 0.2px;
         }
 
         /* Kasaysayan section dividers */
@@ -1419,14 +1669,19 @@
             color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin: 20px 0 8px;
+            margin: 24px 0 10px;
             display: flex;
             align-items: center;
             gap: 10px;
+            padding-bottom: 6px;
+            border-bottom: 2px dashed rgba(212, 148, 10, 0.4);
         }
 
         .kasaysayan-content .kasaysayan-subtitle::before {
-            content: '►';
+            content: '';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            content: '\f101';
             font-size: 14px;
             color: var(--red);
         }
@@ -1435,17 +1690,40 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
         .language-tag {
-            background: rgba(255, 215, 0, 0.15);
-            border: 2px solid rgba(255, 215, 0, 0.4);
+            background:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.06) 2px, rgba(0, 0, 0, 0.06) 3px),
+                linear-gradient(160deg, rgba(212, 148, 10, 0.22), rgba(140, 90, 0, 0.16));
+            border: 2px solid rgba(255, 215, 0, 0.5);
             padding: 6px 16px;
             font-family: 'Jersey 25', cursive;
             font-size: 17px;
             color: var(--gold);
             letter-spacing: 1px;
+            box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
+            clip-path: polygon(0% 5px, 3px 5px, 3px 2px, 5px 2px, 5px 0%, calc(100% - 5px) 0%, calc(100% - 5px) 2px, calc(100% - 3px) 2px, calc(100% - 3px) 5px, 100% 5px, 100% calc(100% - 5px), calc(100% - 3px) calc(100% - 5px), calc(100% - 3px) calc(100% - 2px), calc(100% - 5px) calc(100% - 2px), calc(100% - 5px) 100%, 5px 100%, 5px calc(100% - 2px), 3px calc(100% - 2px), 3px calc(100% - 5px), 0% calc(100% - 5px));
+        }
+
+        /* ===== DARK MODE: KASAYSAYAN SECTION ===== */
+        body.dark-mode .kasaysayan-section {
+            background-color: rgba(8, 5, 1, 0.8);
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.1) 3px, rgba(0, 0, 0, 0.1) 4px);
+        }
+
+        body.dark-mode .kasaysayan-content {
+            background:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.1) 2px, rgba(0, 0, 0, 0.1) 3px),
+                repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0, 0, 0, 0.06) 5px, rgba(0, 0, 0, 0.06) 6px),
+                linear-gradient(160deg, #1c1004 0%, #140c02 50%, #0c0800 100%);
+            color: #e8d5a8;
+        }
+
+        body.dark-mode .stat-box {
+            background: rgba(10, 5, 0, 0.8);
         }
 
         /* ===== STATS ROW ===== */
@@ -1461,7 +1739,7 @@
         }
 
         .stat-box {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(30, 15, 0, 0.65);
             border: 3px solid var(--gold-dark);
             padding: 16px 28px;
             text-align: center;
@@ -1480,15 +1758,16 @@
         .stat-number {
             font-family: 'Jersey 25', cursive;
             font-size: 36px;
-            color: var(--gold);
+            color: #FFD740;
             line-height: 1;
-            text-shadow: 2px 2px 0 var(--red);
+            text-shadow: 2px 2px 0 #5a0000;
         }
 
         .stat-label {
-            font-family: 'Jersey 10', cursive;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
+            font-family: 'Nunito', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(255, 240, 190, 0.9);
             margin-top: 4px;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -1643,6 +1922,46 @@
             }
         }
 
+        /* ===== AUDIO HINT BANNER in detail ===== */
+        .audio-hint-banner {
+            background: rgba(73, 49, 11, 0.718);
+            border: 2px solid #9b6226;
+            padding: 8px 16px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #f0c980;
+            letter-spacing: 0.5px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+            clip-path: polygon(0% 5px, 3px 5px, 3px 2px, 5px 2px, 5px 0%, calc(100% - 5px) 0%, calc(100% - 5px) 2px, calc(100% - 3px) 2px, calc(100% - 3px) 5px, 100% 5px, 100% calc(100% - 5px), calc(100% - 3px) calc(100% - 5px), calc(100% - 3px) calc(100% - 2px), calc(100% - 5px) calc(100% - 2px), calc(100% - 5px) 100%, 5px 100%, 5px calc(100% - 2px), 3px calc(100% - 2px), 3px calc(100% - 5px), 0% calc(100% - 5px));
+            width: 100%;
+        }
+
+        @media (max-width: 480px) {
+            .audio-hint-banner {
+                font-size: 12px;
+                padding: 10px 12px;
+                justify-content: center;
+                text-align: center;
+                line-height: 1.6;
+                gap: 4px;
+            }
+
+            .audio-hint-banner i {
+                font-size: 14px;
+            }
+
+            .audio-hint-banner strong {
+                white-space: nowrap;
+            }
+        }
+
+        /* Audio indicator removed from word buttons */
+
         /* ===== PROGRESS INDICATOR ===== */
         .reading-progress {
             position: fixed;
@@ -1668,7 +1987,7 @@
         }
 
         .sound-btn {
-            background: rgba(10, 3, 0, 0.9);
+            background: var(--nav-bg);
             border: 3px solid var(--gold);
             color: var(--gold);
             font-family: 'Jersey 25', cursive;
@@ -1703,7 +2022,7 @@
 
         .sound-panel {
             display: none;
-            background: rgba(10, 3, 0, 0.95);
+            background: var(--nav-bg);
             border: 3px solid var(--gold);
             padding: 16px;
             clip-path: polygon(0% 8px, 4px 8px, 4px 4px, 8px 4px, 8px 0%,
@@ -1801,16 +2120,53 @@
             }
         }
 
+        /* ===== DARK MODE TOGGLE ===== */
+        .dark-mode-btn {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Jersey 25', cursive;
+            font-size: 16px;
+            padding: 7px 14px;
+            cursor: pointer;
+            transition: all 0.15s steps(2);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            clip-path: polygon(0% 6px, 3px 6px, 3px 3px, 6px 3px, 6px 0%,
+                    calc(100% - 6px) 0%, calc(100% - 6px) 3px, calc(100% - 3px) 3px,
+                    calc(100% - 3px) 6px, 100% 6px, 100% calc(100% - 6px),
+                    calc(100% - 3px) calc(100% - 6px), calc(100% - 3px) calc(100% - 3px),
+                    calc(100% - 6px) calc(100% - 3px), calc(100% - 6px) 100%,
+                    6px 100%, 6px calc(100% - 3px), 3px calc(100% - 3px),
+                    3px calc(100% - 6px), 0% calc(100% - 6px));
+        }
+
+        .dark-mode-btn:hover {
+            background: rgba(180, 120, 20, 0.2);
+            box-shadow: 2px 2px 0 var(--gold-deep);
+        }
+
+        body.dark-mode .dark-mode-btn {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
         /* ===== WORD OF THE DAY ===== */
         .wotd-section {
-            background: linear-gradient(135deg, rgba(10, 3, 0, 0.85), rgba(26, 10, 0, 0.9));
+            background:
+                repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.05) 3px, rgba(0, 0, 0, 0.05) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(0, 0, 0, 0.03) 6px, rgba(0, 0, 0, 0.03) 7px),
+                linear-gradient(135deg, rgba(30, 14, 2, 0.92), rgba(46, 24, 4, 0.97));
             border: 3px solid var(--gold);
             padding: 28px 32px;
             margin: 0 auto 0;
             max-width: 900px;
             position: relative;
             clip-path: polygon(0% 12px, 6px 12px, 6px 6px, 12px 6px, 12px 0%, calc(100% - 12px) 0%, calc(100% - 12px) 6px, calc(100% - 6px) 6px, calc(100% - 6px) 12px, 100% 12px, 100% calc(100% - 12px), calc(100% - 6px) calc(100% - 12px), calc(100% - 6px) calc(100% - 6px), calc(100% - 12px) calc(100% - 6px), calc(100% - 12px) 100%, 12px 100%, 12px calc(100% - 6px), 6px calc(100% - 6px), 6px calc(100% - 12px), 0% calc(100% - 12px));
-            box-shadow: 4px 4px 0 var(--red-dark);
+            box-shadow: 4px 4px 0 var(--red-dark), 0 0 0 1px rgba(0, 0, 0, 0.3);
             width: 90%;
         }
 
@@ -1827,8 +2183,11 @@
         }
 
         .wotd-label::before {
-            content: '★';
+            content: '\f005';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
             color: var(--gold);
+            font-size: 12px;
         }
 
         .wotd-term {
@@ -1841,9 +2200,9 @@
         }
 
         .wotd-def {
-            font-family: 'Jersey 10', cursive;
+            font-family: 'Nunito', sans-serif;
             font-size: clamp(15px, 2vw, 19px);
-            color: rgba(255, 255, 255, 0.85);
+            color: #f0deb0;
             line-height: 1.6;
             margin-bottom: 14px;
         }
@@ -1889,7 +2248,9 @@
             align-items: center;
             justify-content: flex-start;
             padding: 110px 5% 80px;
-            background: url('./images/bg5.png') center/cover no-repeat;
+            background-color: transparent;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0, 0, 0, 0.03) 4px, rgba(0, 0, 0, 0.03) 5px);
             position: relative;
         }
 
@@ -1897,8 +2258,12 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(15, 5, 0, 0.75);
+            background: rgba(20, 10, 0, 0.35);
             pointer-events: none;
+        }
+
+        body.dark-mode .flashcard-section::before {
+            background: rgba(0, 0, 0, 0.8);
         }
 
         .flashcard-section>* {
@@ -1999,27 +2364,39 @@
         }
 
         .flashcard-front {
-            background: linear-gradient(180deg, #FFD54F 0%, #FFC107 100%);
-            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15), 0 8px 0 0 var(--red), 0 12px 0 0 var(--red-dark), 0 16px 25px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(160deg, #c87a08 0%, #a05e00 55%, #7a4000 100%);
+            box-shadow:
+                0 0 0 3px rgba(200, 120, 8, 0.5),
+                0 0 0 5px rgba(0, 0, 0, 0.25),
+                0 8px 0 0 #5a2200,
+                0 12px 0 0 #3d1400,
+                0 16px 25px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 210, 100, 0.25);
         }
 
         .flashcard-back {
-            background: linear-gradient(180deg, #42A5F5 0%, #1565C0 100%);
-            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15), 0 8px 0 0 var(--red), 0 12px 0 0 var(--red-dark), 0 16px 25px rgba(0, 0, 0, 0.4);
+           background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.04) 2px, rgba(0, 0, 0, 0.04) 3px), repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0, 0, 0, 0.025) 5px, rgba(0, 0, 0, 0.025) 6px), linear-gradient(160deg, #3a2008 0%, #2c1804 50%, #1e1002 100%);
+            box-shadow:
+                0 0 0 3px rgba(155, 40, 40, 0.5),
+                0 0 0 5px rgba(0, 0, 0, 0.25),
+                0 8px 0 0 #4e0a0a,
+                0 12px 0 0 #330505,
+                0 16px 25px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 140, 140, 0.15);
             transform: rotateY(180deg);
         }
 
         .fc-hint {
-            font-family: 'Jersey 10', cursive;
+            font-family: 'Nunito', sans-serif;
             font-size: 13px;
-            color: rgba(0, 0, 0, 0.35);
+            color: rgba(255, 220, 160, 0.55);
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 16px;
         }
 
         .fc-back-hint {
-            font-family: 'Jersey 10', cursive;
+            font-family: 'Nunito', sans-serif;
             font-size: 13px;
             color: rgba(255, 255, 255, 0.4);
             letter-spacing: 2px;
@@ -2030,7 +2407,7 @@
         .fc-term {
             font-family: 'Jersey 25', cursive;
             font-size: clamp(28px, 5vw, 44px);
-            color: #fff;
+            color: #f0deb0;
             text-align: center;
             text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4);
             text-transform: uppercase;
@@ -2040,21 +2417,21 @@
         .fc-category-tag {
             font-family: 'Jersey 25', cursive;
             font-size: 13px;
-            color: rgba(0, 0, 0, 0.45);
+            color: rgba(255, 210, 140, 0.5);
             letter-spacing: 2px;
             margin-top: 14px;
         }
 
         .fc-definition {
-            font-family: 'Jersey 10', cursive;
+            font-family: 'Nunito', sans-serif;
             font-size: clamp(15px, 2.2vw, 19px);
-            color: rgba(255, 255, 255, 0.95);
+            color: #f0deb0;
             text-align: center;
             line-height: 1.6;
         }
 
         .fc-usage {
-            font-family: 'Jersey 10', cursive;
+            font-family: 'Nunito', sans-serif;
             font-size: 14px;
             color: rgba(255, 255, 255, 0.6);
             text-align: center;
@@ -2156,7 +2533,7 @@
         }
 
         .fc-done-sub {
-            font-family: 'Jersey 10', cursive;
+            font-family: 'Nunito', sans-serif;
             font-size: 18px;
             color: rgba(255, 255, 255, 0.6);
         }
@@ -2169,7 +2546,9 @@
             align-items: center;
             justify-content: flex-start;
             padding: 110px 5% 80px;
-            background: url('./images/bg5.png') center/cover no-repeat;
+            background-color: transparent;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0, 0, 0, 0.03) 4px, rgba(0, 0, 0, 0.03) 5px);
             position: relative;
         }
 
@@ -2177,8 +2556,12 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(15, 5, 0, 0.78);
+            background: rgba(20, 10, 0, 0.35);
             pointer-events: none;
+        }
+
+        body.dark-mode .quiz-section::before {
+            background: rgba(0, 0, 0, 0.8);
         }
 
         .quiz-section>* {
@@ -2218,18 +2601,18 @@
         }
 
         .quiz-question-box {
-            background: linear-gradient(180deg, #FFD54F 0%, #FFC107 100%);
+            background: linear-gradient(160deg, #c87a08 0%, #a05e00 55%, #7a4000 100%);
             padding: 28px 32px;
             margin-bottom: 24px;
             position: relative;
             clip-path: polygon(0% 16px, 6px 16px, 6px 10px, 10px 10px, 10px 6px, 16px 6px, 16px 0%, calc(100% - 16px) 0%, calc(100% - 16px) 6px, calc(100% - 10px) 6px, calc(100% - 10px) 10px, calc(100% - 6px) 10px, calc(100% - 6px) 16px, 100% 16px, 100% calc(100% - 16px), calc(100% - 6px) calc(100% - 16px), calc(100% - 6px) calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) calc(100% - 6px), calc(100% - 16px) calc(100% - 6px), calc(100% - 16px) 100%, 16px 100%, 16px calc(100% - 6px), 10px calc(100% - 6px), 10px calc(100% - 10px), 6px calc(100% - 10px), 6px calc(100% - 16px), 0% calc(100% - 16px));
-            box-shadow: 0 8px 0 0 var(--red), 0 12px 0 0 var(--red-dark), 0 16px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 0 0 #5a2200, 0 12px 0 0 #3d1400, 0 16px 20px rgba(0, 0, 0, 0.4);
         }
 
         .quiz-q-label {
             font-family: 'Jersey 25', cursive;
             font-size: 13px;
-            color: rgba(0, 0, 0, 0.45);
+            color: rgba(255, 220, 160, 0.6);
             letter-spacing: 3px;
             margin-bottom: 10px;
         }
@@ -2237,14 +2620,14 @@
         .quiz-q-num {
             font-family: 'Jersey 25', cursive;
             font-size: 14px;
-            color: rgba(0, 0, 0, 0.4);
+            color: rgba(255, 220, 160, 0.5);
             float: right;
         }
 
         .quiz-question-text {
-            font-family: 'Jersey 10', cursive;
+            font-family: 'Nunito', sans-serif;
             font-size: clamp(16px, 2.5vw, 21px);
-            color: #1a0a00;
+            color: rgba(255, 240, 200, 0.97);
             line-height: 1.6;
         }
 
@@ -2261,7 +2644,7 @@
             padding: 14px 22px;
             background: rgba(10, 3, 0, 0.85);
             border: 2px solid rgba(255, 215, 0, 0.3);
-            color: rgba(255, 255, 255, 0.85);
+            color: #f0deb0;
             cursor: pointer;
             text-align: left;
             letter-spacing: 0.5px;
@@ -2353,7 +2736,7 @@
         }
 
         .quiz-result-grade {
-            font-family: 'Jersey 10', cursive;
+            font-family: 'Nunito', sans-serif;
             font-size: 22px;
             color: rgba(255, 255, 255, 0.7);
         }
@@ -2384,7 +2767,7 @@
             display: inline-block;
             background: var(--red);
             color: #fff;
-            font-family: 'Jersey 10', cursive;
+            font-family: 'Nunito', sans-serif;
             font-size: 10px;
             padding: 1px 5px;
             margin-left: 4px;
@@ -2409,25 +2792,25 @@
             <div class="sound-panel-title">■ TUNOG ■</div>
             <div class="volume-options">
                 <button class="vol-btn" id="volMute" onclick="setVolume('mute')">
-                    <span class="vol-icon">🔇</span> MUTE
+                    <span class="vol-icon"><i class="fas fa-volume-xmark"></i></span> MUTE
                     <span class="vol-bar mute">
                         <span></span><span></span><span></span>
                     </span>
                 </button>
                 <button class="vol-btn" id="volLow" onclick="setVolume('low')">
-                    <span class="vol-icon">🔈</span> MABABA
+                    <span class="vol-icon"><i class="fas fa-volume-off"></i></span> MABABA
                     <span class="vol-bar low">
                         <span></span><span></span><span></span>
                     </span>
                 </button>
                 <button class="vol-btn" id="volMid" onclick="setVolume('mid')">
-                    <span class="vol-icon">🔉</span> KATAMTAMAN
+                    <span class="vol-icon"><i class="fas fa-volume-low"></i></span> KATAMTAMAN
                     <span class="vol-bar mid">
                         <span></span><span></span><span></span>
                     </span>
                 </button>
                 <button class="vol-btn" id="volHigh" onclick="setVolume('high')">
-                    <span class="vol-icon">🔊</span> MALAKAS
+                    <span class="vol-icon"><i class="fas fa-volume-high"></i></span> MALAKAS
                     <span class="vol-bar high">
                         <span></span><span></span><span></span>
                     </span>
@@ -2435,7 +2818,7 @@
             </div>
         </div>
         <button class="sound-btn" id="soundToggleBtn" onclick="toggleSoundPanel()" title="Sound Settings">
-            🔊
+            <i class="fas fa-volume-high"></i>
         </button>
     </div>
 
@@ -2452,6 +2835,9 @@
             <a href="#" onclick="scrollToKasaysayan()">Kasaysayan</a>
             <a href="#" onclick="showFlashcard()" id="navFlashcard">Flashcard</a>
             <a href="#" onclick="showQuiz()" id="navQuiz">Pagsusulit</a>
+            <button class="dark-mode-btn" id="darkModeBtn" onclick="toggleDarkMode()" title="I-toggle ang Dark Mode"><i
+                    class="fas fa-sun"></i>
+                Liwanag</button>
         </div>
         <button class="hamburger" id="hamburger">
             <span></span><span></span><span></span>
@@ -2465,6 +2851,9 @@
         <a href="#" onclick="scrollToKasaysayanMobile()">Kasaysayan</a>
         <a href="#" onclick="showFlashcard(); closeMobileMenu();">Flashcard</a>
         <a href="#" onclick="showQuiz(); closeMobileMenu();">Pagsusulit</a>
+        <button class="dark-mode-btn" style="margin-top:20px;width:100%;"
+            onclick="toggleDarkMode(); closeMobileMenu();"><i class="fas fa-circle-half-stroke"></i> Dark/Light
+            Mode</button>
     </div>
     <div class="overlay" id="overlay"></div>
 
@@ -2486,7 +2875,7 @@
             <div class="hero-cta">
                 <button class="btn-primary" onclick="showGlosaryo()">TUKLASIN ANG MGA SALITA</button>
                 <button class="btn-secondary" onclick="scrollToKasaysayan()">KASAYSAYAN</button>
-          <!--  <button class="btn-secondary" onclick="showFlashcard()">▶ FLASHCARD</button>
+                <!--  <button class="btn-secondary" onclick="showFlashcard()">▶ FLASHCARD</button>
                 <button class="btn-secondary" onclick="showQuiz()">✎ QUIZ</button>-->
             </div>
             <div class="scroll-down" onclick="scrollToCarousel()">
@@ -2703,7 +3092,7 @@
             <button class="kagamitan-button"
                 onclick="showDetail('Partisyón', 'materyales')"><span>Partisyón</span></button>
             <button class="kagamitan-button" onclick="showDetail('lokál', 'materyales')"><span>
-                     lokál</span></button>
+                    lokál</span></button>
             <button class="kagamitan-button" onclick="showDetail('Skráp', 'materyales')"><span>Skráp</span></button>
             <button class="kagamitan-button" onclick="showDetail('Síngle', 'materyales')"><span>Síngle</span></button>
             <button class="kagamitan-button" onclick="showDetail('Sosà', 'materyales')"><span>Sosà</span></button>
@@ -2816,15 +3205,15 @@
                 </div>
 
                 <div class="detail-content">
+                    <div class="audio-hint-banner"><i class="fas fa-volume-high"></i> Pindutin ang
+                        <strong>PAKINGGAN</strong> para marinig ang bawat bahagi
+                    </div>
                     <div class="detail-section-with-audio">
                         <h4 class="detail-section-title">
                             Kahulugan
                             <div class="audio-icon" id="definitionAudioIcon" onclick="toggleAudio('definition')"
-                                title="Pakinggan">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path
-                                        d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
-                                </svg>
+                                title="Pakinggan ang kahulugan">
+                                PAKINGGAN
                             </div>
                         </h4>
                         <p class="detail-text" id="detailDefinition">Isang bahagi ng kater na nagsisilbing gabay sa
@@ -2835,11 +3224,8 @@
                         <h4 class="detail-section-title">
                             Gamit sa Pangungusap
                             <div class="audio-icon" id="usageAudioIcon" onclick="toggleAudio('usage')"
-                                title="Pakinggan">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path
-                                        d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
-                                </svg>
+                                title="Pakinggan ang gamit sa pangungusap">
+                                PAKINGGAN
                             </div>
                         </h4>
                         <p class="detail-text" id="detailUsage">Ipinadaan ni Miguel ang karton sa iskóring upang
@@ -2885,7 +3271,7 @@
                 </div>
             </div>
             <div class="fc-done-screen" id="fcDoneScreen">
-                <div class="fc-done-text">🎉 NATAPOS MO NA!</div>
+                <div class="fc-done-text"><i class="fas fa-trophy"></i> NATAPOS MO NA!</div>
                 <div class="fc-done-sub" id="fcDoneSub">Napag-aralan mo na ang lahat ng flashcard.</div>
                 <button class="fc-btn fc-btn-flip" onclick="restartFlashcard()">↻ ULIT</button>
             </div>
@@ -2904,7 +3290,7 @@
     <!-- ===== QUIZ SECTION ===== -->
     <section class="quiz-section" id="quiz">
         <div class="quiz-header">
-            <h2 class="quiz-title">✎ Pagsusulit</h2>
+            <h2 class="quiz-title"><i class="fas fa-pen-to-square"></i> Pagsusulit</h2>
             <div class="quiz-score-display">★ <span id="quizScoreDisplay">0</span> puntos</div>
             <button class="back-button" onclick="showHome()">◄ Bumalik</button>
         </div>
@@ -2929,7 +3315,8 @@
                     <button class="fc-filter-btn" onclick="setQuizCount(20,this)">20</button>
                     <button class="fc-filter-btn" onclick="setQuizCount(999,this)">LAHAT</button>
                 </div>
-                <button class="btn-primary" onclick="startQuiz()" style="margin:0 auto;display:block">SIMULAN ANG PAGSUSULIT
+                <button class="btn-primary" onclick="startQuiz()" style="margin:0 auto;display:block">SIMULAN ANG
+                    PAGSUSULIT
                     ►</button>
             </div>
             <!-- Quiz game -->
@@ -3271,15 +3658,32 @@
 
         function updateNavActive(section) {
             document.querySelectorAll('nav a, .mobile-menu a').forEach(l => l.classList.remove('active'));
-            const homeSelectors = ['home', 'kasaysayan', 'kagamitan', 'materyales', 'proseso', 'gampanin', 'detail'];
+            const homeSelectors = ['home', 'kagamitan', 'materyales', 'proseso', 'gampanin', 'detail'];
             if (homeSelectors.includes(section)) {
                 const homeLink = document.querySelector('nav a[onclick="showHome()"]');
                 if (homeLink) homeLink.classList.add('active');
                 const mobileHomeLink = document.querySelector('.mobile-menu a[onclick="showHomeMobile()"]');
                 if (mobileHomeLink) mobileHomeLink.classList.add('active');
+            } else if (section === 'kasaysayan') {
+                const kasLink = document.querySelector('nav a[onclick="scrollToKasaysayan()"]');
+                if (kasLink) kasLink.classList.add('active');
+                const mobileKasLink = document.querySelector('.mobile-menu a[onclick="scrollToKasaysayanMobile()"]');
+                if (mobileKasLink) mobileKasLink.classList.add('active');
             } else if (section === 'glosaryo') {
                 const glosLink = document.querySelector('nav a[onclick="showGlosaryo()"]');
                 if (glosLink) glosLink.classList.add('active');
+                const mobileGlosLink = document.querySelector('.mobile-menu a[onclick="showGlosaryoMobile()"]');
+                if (mobileGlosLink) mobileGlosLink.classList.add('active');
+            } else if (section === 'flashcard') {
+                const flashLink = document.getElementById('navFlashcard');
+                if (flashLink) flashLink.classList.add('active');
+                const mobileFlashLink = document.querySelector('.mobile-menu a[onclick="showFlashcard(); closeMobileMenu();"]');
+                if (mobileFlashLink) mobileFlashLink.classList.add('active');
+            } else if (section === 'quiz') {
+                const quizLink = document.getElementById('navQuiz');
+                if (quizLink) quizLink.classList.add('active');
+                const mobileQuizLink = document.querySelector('.mobile-menu a[onclick="showQuiz(); closeMobileMenu();"]');
+                if (mobileQuizLink) mobileQuizLink.classList.add('active');
             }
         }
 
@@ -3409,7 +3813,10 @@
             if (currentAudio) {
                 currentAudio.pause();
                 currentAudio.currentTime = 0;
-                document.querySelectorAll('.audio-icon').forEach(i => i.classList.remove('playing'));
+                document.querySelectorAll('.audio-icon').forEach(i => {
+                    i.classList.remove('playing');
+                    i.textContent = 'PAKINGGAN';
+                });
             }
 
             if (currentAudio && currentAudio.src.includes(audioFile)) { currentAudio = null; return; }
@@ -3417,22 +3824,25 @@
             currentAudio = new Audio(audioFile);
             if (type === 'usage') currentAudio.currentTime = 1.0;
             currentAudio.play();
-            if (audioIcon) audioIcon.classList.add('playing');
+            if (audioIcon) { audioIcon.classList.add('playing'); audioIcon.textContent = 'TUMUTUGTOG'; }
 
             currentAudio.onended = function () {
-                if (audioIcon) audioIcon.classList.remove('playing');
+                if (audioIcon) { audioIcon.classList.remove('playing'); audioIcon.textContent = 'PAKINGGAN'; }
                 currentAudio = null;
             };
 
             currentAudio.onerror = function () {
-                if (audioIcon) audioIcon.classList.remove('playing');
+                if (audioIcon) { audioIcon.classList.remove('playing'); audioIcon.textContent = 'PAKINGGAN'; }
                 alert('Audio file not found for: ' + currentDetailTerm);
                 currentAudio = null;
             };
         }
 
         function resetAllAudioIcons() {
-            document.querySelectorAll('.audio-icon').forEach(i => i.classList.remove('playing'));
+            document.querySelectorAll('.audio-icon').forEach(i => {
+                i.classList.remove('playing');
+                if (i.id !== 'wotdAudioIcon') i.textContent = 'PAKINGGAN';
+            });
         }
 
         function goBackToPreviousSection() {
@@ -3475,6 +3885,9 @@
 
         function scrollToKasaysayan() {
             if (currentSection !== 'home') showHome();
+            previousSection = currentSection;
+            currentSection = 'kasaysayan';
+            updateNavActive('kasaysayan');
             setTimeout(() => {
                 document.getElementById('kasaysayan').scrollIntoView({ behavior: 'smooth' });
             }, 100);
@@ -3816,10 +4229,10 @@
             const pct = Math.round((quizScore / total) * 100);
             document.getElementById('quizResultScore').textContent = quizScore + '/' + total;
             let grade, title;
-            if (pct === 100) { grade = '🏆 Perpekto! Napakahusay mo!'; title = 'NAPAKAHUSAY!'; }
-            else if (pct >= 80) { grade = '🎉 Magaling! Patuloy lang!'; title = 'MAGALING!'; }
-            else if (pct >= 60) { grade = '👍 Okay! Pag-aralan pa nang higit.'; title = 'PASADO!'; }
-            else { grade = '📚 Mag-aral pa. Kaya mo ito!'; title = 'SUBUKAN ULIT!'; }
+            if (pct === 100) { grade = 'Perpekto! Napakahusay mo!'; title = 'NAPAKAHUSAY!'; }
+            else if (pct >= 80) { grade = 'Magaling! Patuloy lang!'; title = 'MAGALING!'; }
+            else if (pct >= 60) { grade = 'Okay! Pag-aralan pa nang higit.'; title = 'PASADO!'; }
+            else { grade = 'Mag-aral pa. Kaya mo ito!'; title = 'SUBUKAN ULIT!'; }
             document.getElementById('quizResultTitle').textContent = title;
             document.getElementById('quizResultGrade').textContent = grade;
             document.getElementById('quizProgressBar').style.width = '100%';
@@ -3836,11 +4249,45 @@
             closeMobileMenu();
         }
 
+        // ===== SPEAK WORD OF THE DAY =====
+        function speakWotd() {
+            const term = document.getElementById('wotdTerm').textContent;
+            const def = document.getElementById('wotdDef').textContent;
+            const icon = document.getElementById('wotdAudioIcon');
+            if (!term || term === '—') return;
+            window.speechSynthesis.cancel();
+            const utt = new SpeechSynthesisUtterance(term + '. ' + def);
+            utt.lang = 'fil-PH';
+            utt.rate = 0.88;
+            if (icon) { icon.classList.add('playing'); icon.textContent = 'TUMUTUGTOG'; }
+            utt.onend = utt.onerror = function () {
+                if (icon) { icon.classList.remove('playing'); icon.textContent = 'PAKINGGAN'; }
+            };
+            window.speechSynthesis.speak(utt);
+        }
+
+        // ===== DARK MODE TOGGLE =====
+        function toggleDarkMode() {
+            const body = document.body;
+            const btn = document.getElementById('darkModeBtn');
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            if (btn) btn.innerHTML = isDark ? '<i class="fas fa-moon"></i> Dilim' : '<i class="fas fa-sun"></i> Liwanag';
+            localStorage.setItem('darkMode', isDark ? '1' : '0');
+        }
+
         // ===== START ON DOMContentLoaded =====
-       document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
             showHome();
             document.getElementById('volMid').classList.add('active');
             initWordOfDay(false);
+
+            // Restore dark mode preference
+            if (localStorage.getItem('darkMode') === '1') {
+                document.body.classList.add('dark-mode');
+                const btn = document.getElementById('darkModeBtn');
+                if (btn) btn.innerHTML = '<i class="fas fa-moon"></i> Dilim';
+            }
 
             // Wait for first user interaction, then start music
             function startOnInteraction() {
