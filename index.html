@@ -13,9 +13,9 @@
     <style>
         /* ===== LIGHT MODE (DEFAULT) ===== */
         :root {
-            --gold: #f3aa0e;
+            --gold: #FFDA44;
             --gold-dark: #ed9b0e;
-            --gold-deep: #8C5A00;
+            --gold-deep: #cb9634;
             --red: #9B2828;
             --red-dark: #7A1616;
             --red-deep: #4E0A0A;
@@ -56,9 +56,9 @@
             --card-border: #6e4a10;
             --nav-bg: rgba(8, 4, 0, 0.98);
             --search-bg: rgba(8, 4, 0, 0.8);
-            --gold: #e8aa18;
+            --gold: #FFDA44;
             --gold-dark: #c88a08;
-            --gold-deep: #a87000;
+            --gold-deep: #cb9634;
         }
 
         /* ===== CARDBOARD TEXTURE MIXIN ===== */
@@ -155,12 +155,13 @@
             overflow-x: hidden;
         }
 
+/*repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.04) 3px, rgba(0, 0, 0, 0.04) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0, 0, 0, 0.025) 5px, rgba(0, 0, 0, 0.025) 6px),
+                */
         body {
             background-color: var(--bg-page);
             background-image:
-                repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.04) 3px, rgba(0, 0, 0, 0.04) 4px),
-                repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0, 0, 0, 0.025) 5px, rgba(0, 0, 0, 0.025) 6px),
-                url('./images/bg5.png');
+               url('./images/bg6.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -374,8 +375,7 @@
             position: relative;
             background-color: #5a3a10;
             background-image:
-
-                url('./images/bg4.png');
+               url('./images/bg6.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -387,13 +387,13 @@
             background-image:
                 repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.08) 3px, rgba(0, 0, 0, 0.08) 4px),
                 linear-gradient(160deg, rgba(0, 0, 0, 0.7) 0%, rgba(5, 2, 0, 0.8) 50%, rgba(0, 0, 0, 0.9) 100%),
-                url('./images/bg4.png');
+                url('./images/bg6.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
 
-        /* Pixel scanline overlay */
+        /* Pixel scanline overlay 
         .hero::before {
             content: '';
             position: absolute;
@@ -405,7 +405,7 @@
                     transparent 4px);
             pointer-events: none;
             z-index: 1;
-        }
+        }*/
 
         /* Bottom gradient fade */
         .hero::after {
@@ -498,7 +498,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, #f3aa0e, #fff8d0, #f3aa0e, #ffe88a, #f3aa0e);
+            background: linear-gradient(90deg, #FFDA44, #fff8d0, #FFDA44, #ffe88a, #FFDA44);
             background-size: 300% 100%;
             -webkit-background-clip: text;
             background-clip: text;
@@ -718,7 +718,7 @@
             align-items: center;
             padding: 80px 20px;
             background-color: transparent;
-            background: rgba(20, 10, 0, 0.15);
+            background: rgba(20, 10, 0, 0.0);
             text-align: center;
             position: relative;
         }
@@ -730,7 +730,7 @@
         .section-heading {
             font-family: 'Jersey 25', cursive;
             font-size: clamp(40px, 8vw, 80px);
-            color: #f3aa0e;
+            color: #FFDA44;
             margin-bottom: 15px;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -805,7 +805,7 @@
             flex-direction: column;
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: linear-gradient(160deg, #c87a08 0%, #a05e00 55%, #7a4000 100%);
+            background: linear-gradient(160deg, #FFDA44 0%, #ffffff 55%, #FFDA44 100%);
             box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.35), 0 8px 0 0 var(--red-dark), 0 12px 0 0 var(--red-deep), 0 14px 20px rgba(0, 0, 0, 0.45);
             cursor: pointer;
             flex-shrink: 0;
@@ -1079,7 +1079,7 @@
         .detail-title {
             font-family: 'Jersey 25', cursive;
             font-size: clamp(38px, 7vw, 72px);
-            color: #f3aa0e;
+            color: #FFDA44;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-shadow: 2px 2px 0 #5a0000, 4px 4px 0 rgba(0, 0, 0, 0.5);
@@ -1296,7 +1296,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            background: linear-gradient(160deg, #c87a08 0%, #a05e00 55%, #7a4000 100%);
+            background: linear-gradient(160deg, #FFDA44 0%, #ffffff 55%, #FFDA44 100%);
             box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15), 0 8px 0 0 var(--red), 0 12px 0 0 var(--red-dark), 0 16px 25px rgba(0, 0, 0, 0.4);
             margin-bottom: 40px;
             animation: cardEntrance 0.4s ease;
@@ -1578,10 +1578,7 @@
             align-items: center;
             padding: 80px 5%;
             background-color: transparent;
-            background: rgba(20, 10, 0, 0.15);
-            background-image:
-                repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.045) 3px, rgba(0, 0, 0, 0.045) 4px),
-                linear-gradient(160deg, rgba(255, 230, 150, 0.07) 0%, transparent 55%, rgba(0, 0, 0, 0.08) 100%);
+            background: rgba(20, 10, 0, 0.0);   
             position: relative;
             overflow: hidden;
         }
@@ -2250,8 +2247,6 @@
             justify-content: flex-start;
             padding: 110px 5% 80px;
             background-color: transparent;
-            background-image:
-                repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0, 0, 0, 0.03) 4px, rgba(0, 0, 0, 0.03) 5px);
             position: relative;
         }
 
@@ -2259,7 +2254,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(20, 10, 0, 0.35);
+            background: rgba(20, 10, 0, 0.0);
             pointer-events: none;
         }
 
@@ -2309,7 +2304,7 @@
             font-size: 15px;
             padding: 8px 20px;
             border: 2px solid rgba(255, 215, 0, 0.35);
-            color: rgba(255, 255, 255, 0.6);
+            color: #f0deb0;
             background: transparent;
             cursor: pointer;
             letter-spacing: 1px;
@@ -2408,7 +2403,7 @@
         .fc-term {
             font-family: 'Jersey 25', cursive;
             font-size: clamp(28px, 5vw, 44px);
-            color: #f0deb0;
+            color: #fff;
             text-align: center;
             text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4);
             text-transform: uppercase;
@@ -2548,8 +2543,6 @@
             justify-content: flex-start;
             padding: 110px 5% 80px;
             background-color: transparent;
-            background-image:
-                repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0, 0, 0, 0.03) 4px, rgba(0, 0, 0, 0.03) 5px);
             position: relative;
         }
 
@@ -2557,7 +2550,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(20, 10, 0, 0.35);
+            background: rgba(20, 10, 0, 0.0);
             pointer-events: none;
         }
 
