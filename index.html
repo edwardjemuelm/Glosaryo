@@ -9,13 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="./images/bg4.png" type="image/png">
-    
+
     <style>
         /* ===== LIGHT MODE (DEFAULT) ===== */
         :root {
             --gold: #FFDA44;
             --gold-dark: #ed9b0e;
-            --gold-deep: #cb9634;
+            --gold-deep: #d29420;
             --red: #9B2828;
             --red-dark: #7A1616;
             --red-deep: #4E0A0A;
@@ -155,13 +155,13 @@
             overflow-x: hidden;
         }
 
-/*repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.04) 3px, rgba(0, 0, 0, 0.04) 4px),
+        /*repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.04) 3px, rgba(0, 0, 0, 0.04) 4px),
                 repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0, 0, 0, 0.025) 5px, rgba(0, 0, 0, 0.025) 6px),
                 */
         body {
             background-color: var(--bg-page);
             background-image:
-               url('./images/bg6.png');
+                url('./images/bg6.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -375,7 +375,7 @@
             position: relative;
             background-color: #5a3a10;
             background-image:
-               url('./images/bg6.png');
+                url('./images/bg6.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -1206,7 +1206,7 @@
             content: '';
             position: absolute;
             inset: 5px;
-            background: linear-gradient(180deg, #d4a838 0%, #b88420 50%, #8a5e0a 100%);
+            background: linear-gradient(180deg, #FFDA44 0%, #FFDA44 50%, #FFDA44 100%);
             clip-path: polygon(0% 6px, 3px 6px, 3px 3px, 6px 3px, 6px 0%,
                     calc(100% - 6px) 0%, calc(100% - 6px) 3px, calc(100% - 3px) 3px,
                     calc(100% - 3px) 6px, 100% 6px, 100% calc(100% - 6px),
@@ -1575,7 +1575,7 @@
             align-items: center;
             padding: 80px 5%;
             background-color: transparent;
-            background: rgba(20, 10, 0, 0.0);   
+            background: rgba(20, 10, 0, 0.0);
             position: relative;
             overflow: hidden;
         }
@@ -2301,11 +2301,15 @@
             font-size: 15px;
             padding: 8px 20px;
             border: 2px solid rgba(255, 215, 0, 0.35);
-            color: #f0deb0;
+            color: #291501;
             background: transparent;
             cursor: pointer;
             letter-spacing: 1px;
             transition: all 0.15s steps(2);
+        }
+
+        body.dark-mode .fc-filter-btn {
+            color: #f0deb0;
         }
 
         .fc-filter-btn.active,
@@ -2368,7 +2372,7 @@
         }
 
         .flashcard-back {
-           background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.04) 2px, rgba(0, 0, 0, 0.04) 3px), repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0, 0, 0, 0.025) 5px, rgba(0, 0, 0, 0.025) 6px), linear-gradient(160deg, #3a2008 0%, #2c1804 50%, #1e1002 100%);
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.04) 2px, rgba(0, 0, 0, 0.04) 3px), repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0, 0, 0, 0.025) 5px, rgba(0, 0, 0, 0.025) 6px), linear-gradient(160deg, #3a2008 0%, #2c1804 50%, #1e1002 100%);
             box-shadow:
                 0 0 0 3px rgba(155, 40, 40, 0.5),
                 0 0 0 5px rgba(0, 0, 0, 0.25),
@@ -2489,7 +2493,7 @@
         .fc-count {
             font-family: 'Jersey 25', cursive;
             font-size: 16px;
-            color: rgba(255, 255, 255, 0.5);
+            color: #291501; 
             text-align: center;
         }
 
@@ -2497,12 +2501,20 @@
             font-family: 'Jersey 25', cursive;
             font-size: 14px;
             padding: 8px 18px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.5);
+            border: 2px solid #291501;
+            color: #291501;;
             background: transparent;
             cursor: pointer;
             letter-spacing: 1px;
             transition: all 0.15s steps(2);
+        }
+
+        body.dark-mode .fc-shuffle-btn{
+            color: #f0deb0;
+            border: 2px solid #f0deb0;
+        }
+        body.dark-mode .fc-count{
+            color: #f0deb0;
         }
 
         .fc-shuffle-btn:hover {
